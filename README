@@ -1,0 +1,7 @@
+
+This program emulates the core of a TI MSP430F1611. It does __NOT__
+emulate the peripherals (though you can make any address do whatever
+you want).
+
+Good for ~cycle accurate benchmarking, etc.
+

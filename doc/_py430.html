@@ -1,0 +1,119 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module _py430</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_py430</strong></big></big> (version $Id: _py430.html,v 1.3 2007/08/20 21:12:37 DEV Exp $)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/dev/msp/build/lib.cygwin-1.5.21-i686-2.5/_py430.dll">/home/dev/msp/build/lib.cygwin-1.5.21-i686-2.5/_py430.dll</a></font></td></tr></table>
+    <p><tt>This&nbsp;module&nbsp;defines&nbsp;a&nbsp;high-performance&nbsp;MSP430F1611<br>
+profiling&nbsp;<a href="__builtin__.html#object">object</a>;&nbsp;it&nbsp;is&nbsp;intended&nbsp;to&nbsp;be&nbsp;used&nbsp;in&nbsp;conjunction<br>
+with&nbsp;the&nbsp;_soft430&nbsp;module.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial">py430
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>Py430Type</strong> = <a name="Py430Type">class py430</a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>See&nbsp;the&nbsp;module&nbsp;docs.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-bind"><strong>bind</strong></a>(...)</dt><dd><tt><a href="#-bind">bind</a>(msp430,&nbsp;ary)&nbsp;-&gt;&nbsp;obj<br>
+&nbsp;<br>
+Bind&nbsp;the&nbsp;MSP430&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;as&nbsp;returned&nbsp;by&nbsp;_soft430.new<br>
+to&nbsp;the&nbsp;type-L&nbsp;array&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;ary.&nbsp;CPU&nbsp;execution&nbsp;will<br>
+update&nbsp;the&nbsp;profiling&nbsp;data&nbsp;in&nbsp;ary.&nbsp;The&nbsp;array&nbsp;map&nbsp;in<br>
+ary&nbsp;is&nbsp;as&nbsp;follows:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;start&nbsp;&nbsp;&nbsp;&nbsp;length&nbsp;&nbsp;&nbsp;&nbsp;contents<br>
+&nbsp;&nbsp;&nbsp;======&nbsp;&nbsp;&nbsp;&nbsp;======&nbsp;&nbsp;&nbsp;&nbsp;==================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;&nbsp;register&nbsp;values<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;49152&nbsp;&nbsp;&nbsp;&nbsp;program&nbsp;rom<br>
+&nbsp;&nbsp;&nbsp;&nbsp;49168&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10240&nbsp;&nbsp;&nbsp;&nbsp;ram<br>
+&nbsp;&nbsp;&nbsp;&nbsp;59408&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;32768&nbsp;&nbsp;&nbsp;&nbsp;pc&nbsp;counts&nbsp;by&nbsp;word&nbsp;address<br>
+&nbsp;&nbsp;&nbsp;&nbsp;92176&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;sp&nbsp;info<br>
+&nbsp;&nbsp;&nbsp;&nbsp;92179&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;28&nbsp;&nbsp;&nbsp;&nbsp;counts&nbsp;by&nbsp;instruction<br>
+&nbsp;&nbsp;&nbsp;&nbsp;92207&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;28&nbsp;&nbsp;&nbsp;&nbsp;ticks&nbsp;by&nbsp;instruction<br>
+&nbsp;&nbsp;&nbsp;&nbsp;92235&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;65536&nbsp;&nbsp;&nbsp;&nbsp;address&nbsp;space&nbsp;accesses<br>
+&nbsp;&nbsp;&nbsp;157771&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;32768&nbsp;&nbsp;&nbsp;&nbsp;jumps&nbsp;to&nbsp;address<br>
+&nbsp;&nbsp;&nbsp;190539&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;32768&nbsp;&nbsp;&nbsp;&nbsp;calls&nbsp;to&nbsp;address<br>
+&nbsp;&nbsp;&nbsp;223307&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;65536&nbsp;&nbsp;&nbsp;&nbsp;breakpoints&nbsp;by&nbsp;address<br>
+&nbsp;&nbsp;&nbsp;288843&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;32768&nbsp;&nbsp;&nbsp;&nbsp;total&nbsp;ticks&nbsp;per&nbsp;pc&nbsp;address<br>
+&nbsp;<br>
+the&nbsp;sp&nbsp;(r1)&nbsp;info&nbsp;consists&nbsp;of&nbsp;the&nbsp;following&nbsp;three&nbsp;slots:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;0&nbsp;=&nbsp;nonzero&nbsp;if&nbsp;sp&nbsp;has&nbsp;been&nbsp;set<br>
+&nbsp;&nbsp;&nbsp;1&nbsp;=&nbsp;lowest&nbsp;sp&nbsp;value<br>
+&nbsp;&nbsp;&nbsp;2&nbsp;=&nbsp;highest&nbsp;sp&nbsp;value<br>
+&nbsp;<br>
+NOTE:&nbsp;The&nbsp;CPU&nbsp;register,&nbsp;memory,&nbsp;and&nbsp;profiling&nbsp;handlers&nbsp;are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;replaced&nbsp;after&nbsp;the&nbsp;call&nbsp;to&nbsp;<a href="#-bind">bind</a>().<br>
+&nbsp;<br>
+NOTE:&nbsp;If&nbsp;<a href="#-bind">bind</a>()&nbsp;fails,&nbsp;either&nbsp;none&nbsp;or&nbsp;all&nbsp;of&nbsp;these&nbsp;handlers<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;reset&nbsp;to&nbsp;the&nbsp;default&nbsp;C&nbsp;handler&nbsp;function.<br>
+&nbsp;<br>
+NOTE:&nbsp;When&nbsp;the&nbsp;returned&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;is&nbsp;destroyed,&nbsp;the&nbsp;CPU&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;rebound&nbsp;to&nbsp;the&nbsp;default&nbsp;C&nbsp;handler&nbsp;functions.</tt></dd></dl>
+ <dl><dt><a name="-load"><strong>load</strong></a>(...)</dt><dd><tt><a href="#-load">load</a>(obj,&nbsp;filename)<br>
+&nbsp;<br>
+Load&nbsp;the&nbsp;Intel&nbsp;hex&nbsp;file&nbsp;specified&nbsp;by&nbsp;filename<br>
+into&nbsp;the&nbsp;obj&nbsp;returned&nbsp;by&nbsp;<a href="#-bind">bind</a>().</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ARY_SIZE</strong> = 321611<br>
+<strong>BRK_OFS</strong> = 223307<br>
+<strong>BRK_SIZE</strong> = 65536<br>
+<strong>CAL_OFS</strong> = 190539<br>
+<strong>CAL_SIZE</strong> = 32768<br>
+<strong>INS_OFS</strong> = 92179<br>
+<strong>INS_SIZE</strong> = 28<br>
+<strong>JMP_OFS</strong> = 157771<br>
+<strong>JMP_SIZE</strong> = 32768<br>
+<strong>MEM_OFS</strong> = 92235<br>
+<strong>MEM_SIZE</strong> = 65536<br>
+<strong>PCC_OFS</strong> = 59408<br>
+<strong>PCC_SIZE</strong> = 32768<br>
+<strong>PCT_OFS</strong> = 288843<br>
+<strong>PCT_SIZE</strong> = 32768<br>
+<strong>RAM_OFS</strong> = 49168<br>
+<strong>RAM_SIZE</strong> = 10240<br>
+<strong>REG_OFS</strong> = 0<br>
+<strong>REG_SIZE</strong> = 16<br>
+<strong>ROM_OFS</strong> = 16<br>
+<strong>ROM_SIZE</strong> = 49152<br>
+<strong>SP_OFS</strong> = 92176<br>
+<strong>SP_SIZE</strong> = 3<br>
+<strong>TCK_OFS</strong> = 92207<br>
+<strong>TCK_SIZE</strong> = 28<br>
+<strong>__version__</strong> = '$Id: _py430.html,v 1.3 2007/08/20 21:12:37 DEV Exp $'</td></tr></table>
+</body></html>

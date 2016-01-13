@@ -1,0 +1,501 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module _soft430</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_soft430</strong></big></big> (version $Id: _soft430.html,v 1.3 2007/08/20 21:12:37 DEV Exp $)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/dev/msp/build/lib.cygwin-1.5.21-i686-2.5/_soft430.dll">/home/dev/msp/build/lib.cygwin-1.5.21-i686-2.5/_soft430.dll</a></font></td></tr></table>
+    <p><tt>This&nbsp;module&nbsp;implements&nbsp;a&nbsp;Texas&nbsp;Instruments&nbsp;MSP430F1611<br>
+microcontroller&nbsp;in&nbsp;software.&nbsp;See&nbsp;the&nbsp;documentation&nbsp;for<br>
+<a href="#MSP430Type">MSP430Type</a>&nbsp;and&nbsp;<a href="#-new">new</a>()&nbsp;for&nbsp;details.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;defines&nbsp;an&nbsp;exception&nbsp;named&nbsp;<a href="#MSP430Error">MSP430Error</a>&nbsp;and<br>
+an&nbsp;alias&nbsp;named&nbsp;<a href="#error">error</a>.<br>
+&nbsp;<br>
+_soft430.<a href="#error">error</a>&nbsp;is&nbsp;raised&nbsp;when&nbsp;an&nbsp;<a href="#error">error</a>&nbsp;condition<br>
+occurs&nbsp;in&nbsp;the&nbsp;simulator.&nbsp;Errors&nbsp;generated&nbsp;at&nbsp;the&nbsp;C<br>
+level&nbsp;will&nbsp;raise&nbsp;this&nbsp;exception&nbsp;with&nbsp;three&nbsp;args:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(func_name,&nbsp;error_desc,&nbsp;error_code)<br>
+&nbsp;<br>
+where&nbsp;func_name&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;API&nbsp;function&nbsp;that<br>
+raised&nbsp;the&nbsp;<a href="#error">error</a>,&nbsp;error_code&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;MSP430_EXC_*<br>
+constants,&nbsp;and&nbsp;error_desc&nbsp;is&nbsp;a&nbsp;string&nbsp;description&nbsp;of&nbsp;the<br>
+<a href="#error">error</a>.<br>
+&nbsp;<br>
+Python&nbsp;callbacks&nbsp;may&nbsp;raise&nbsp;this&nbsp;exception&nbsp;in&nbsp;one&nbsp;of&nbsp;two<br>
+ways:&nbsp;with&nbsp;a&nbsp;single&nbsp;error_code&nbsp;argument,&nbsp;or&nbsp;with&nbsp;three<br>
+arguments.&nbsp;In&nbsp;the&nbsp;latter&nbsp;case,&nbsp;the&nbsp;third&nbsp;argument&nbsp;is<br>
+returned&nbsp;to&nbsp;the&nbsp;C&nbsp;API&nbsp;as&nbsp;the&nbsp;exception&nbsp;(the&nbsp;first&nbsp;two<br>
+arguments&nbsp;are&nbsp;ignored).&nbsp;If&nbsp;this&nbsp;protocol&nbsp;is&nbsp;not&nbsp;followed<br>
+or&nbsp;if&nbsp;python&nbsp;callbacks&nbsp;raise&nbsp;some&nbsp;other&nbsp;exception,&nbsp;the&nbsp;C<br>
+API&nbsp;gets&nbsp;a&nbsp;generic&nbsp;MSP430_EXC_PYTHON_FAULT.<br>
+&nbsp;<br>
+The&nbsp;CPU&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;contains&nbsp;a&nbsp;4-tuple&nbsp;describing&nbsp;the&nbsp;last<br>
+<a href="#error">error</a>:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(error_code,&nbsp;detail_1,&nbsp;detail_2,&nbsp;line#)<br>
+&nbsp;<br>
+where&nbsp;error_code&nbsp;is&nbsp;an&nbsp;MSP430_EXC_*&nbsp;code,&nbsp;detail_*&nbsp;are<br>
+word&nbsp;values&nbsp;describing&nbsp;the&nbsp;context&nbsp;(see&nbsp;the&nbsp;C&nbsp;source),&nbsp;and<br>
+line#&nbsp;is&nbsp;the&nbsp;line&nbsp;number&nbsp;in&nbsp;soft430.c&nbsp;where&nbsp;the&nbsp;<a href="#error">error</a>&nbsp;was<br>
+raised.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial">soft430
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="exceptions.html#RuntimeError">exceptions.RuntimeError</a>(<a href="exceptions.html#StandardError">exceptions.StandardError</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="_soft430.html#error">error</a>
+</font></dt><dt><font face="helvetica, arial"><a href="_soft430.html#error">error</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>MSP430Error</strong> = <a name="MSP430Error">class error</a>(<a href="exceptions.html#RuntimeError">exceptions.RuntimeError</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="_soft430.html#error">error</a></dd>
+<dd><a href="exceptions.html#RuntimeError">exceptions.RuntimeError</a></dd>
+<dd><a href="exceptions.html#StandardError">exceptions.StandardError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="exceptions.html#RuntimeError">exceptions.RuntimeError</a>:<br>
+<dl><dt><a name="error-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#MSP430Error-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#RuntimeError">exceptions.RuntimeError</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x6cb88850&gt;<dd><tt>T.<a href="#MSP430Error-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="error-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#MSP430Error-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="error-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#MSP430Error-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="error-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#MSP430Error-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="error-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="error-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#MSP430Error-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="error-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#MSP430Error-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="error-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="error-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#MSP430Error-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+<dd><tt>exception&nbsp;message</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>MSP430Type</strong> = <a name="MSP430Type">class soft430</a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>See&nbsp;the&nbsp;module&nbsp;docs.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="soft430-bfetch"><strong>bfetch</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-bfetch">bfetch</a>(addr)&nbsp;-&gt;&nbsp;value<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;byte&nbsp;contents&nbsp;of&nbsp;addr.</tt></dd></dl>
+
+<dl><dt><a name="soft430-bstore"><strong>bstore</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-bstore">bstore</a>(addr,&nbsp;value)<br>
+&nbsp;<br>
+Store&nbsp;the&nbsp;word&nbsp;value&nbsp;into&nbsp;addr.</tt></dd></dl>
+
+<dl><dt><a name="soft430-clr_prf"><strong>clr_prf</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-clr_prf">clr_prf</a>()<br>
+&nbsp;<br>
+Clear&nbsp;all&nbsp;profiling&nbsp;registers.</tt></dd></dl>
+
+<dl><dt><a name="soft430-clr_reg"><strong>clr_reg</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-clr_reg">clr_reg</a>()<br>
+&nbsp;<br>
+Clear&nbsp;all&nbsp;registers&nbsp;to&nbsp;zero.</tt></dd></dl>
+
+<dl><dt><a name="soft430-ena_prf"><strong>ena_prf</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-ena_prf">ena_prf</a>(flag)<br>
+&nbsp;<br>
+Configure&nbsp;profiling&nbsp;as&nbsp;follows:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MSP430_PROF_OFF&nbsp;&nbsp;--&nbsp;disable&nbsp;profiling<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MSP430_PROF_NEXT&nbsp;--&nbsp;start&nbsp;profiling&nbsp;on&nbsp;next&nbsp;instruction<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MSP430_PROF_NOW&nbsp;&nbsp;--&nbsp;start&nbsp;profiling&nbsp;on&nbsp;current&nbsp;instruction</tt></dd></dl>
+
+<dl><dt><a name="soft430-get_reg"><strong>get_reg</strong></a>(...)</dt><dd><tt>getreg(regnum)<br>
+&nbsp;<br>
+fetch&nbsp;the&nbsp;value&nbsp;in&nbsp;a&nbsp;register.</tt></dd></dl>
+
+<dl><dt><a name="soft430-ld_ihex"><strong>ld_ihex</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-ld_ihex">ld_ihex</a>(filename)<br>
+&nbsp;<br>
+Load&nbsp;the&nbsp;specified&nbsp;Intel&nbsp;hex&nbsp;file&nbsp;into&nbsp;the&nbsp;CPU.</tt></dd></dl>
+
+<dl><dt><a name="soft430-program"><strong>program</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-program">program</a>(addr,&nbsp;value)<br>
+&nbsp;<br>
+Store&nbsp;the&nbsp;word&nbsp;value&nbsp;into&nbsp;program&nbsp;flash/ROM&nbsp;at&nbsp;addr.<br>
+Only&nbsp;works&nbsp;with&nbsp;the&nbsp;default&nbsp;memory&nbsp;handler.</tt></dd></dl>
+
+<dl><dt><a name="soft430-reset"><strong>reset</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-reset">reset</a>()<br>
+&nbsp;<br>
+Load&nbsp;r0&nbsp;with&nbsp;the&nbsp;contents&nbsp;of&nbsp;0xfffe.</tt></dd></dl>
+
+<dl><dt><a name="soft430-run"><strong>run</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-run">run</a>(max_insns=0,&nbsp;max_ticks=0)<br>
+&nbsp;<br>
+Execute&nbsp;code&nbsp;on&nbsp;the&nbsp;CPU.&nbsp;If&nbsp;max_insns&nbsp;is&nbsp;greater<br>
+than&nbsp;zero,&nbsp;run&nbsp;no&nbsp;more&nbsp;than&nbsp;that&nbsp;many&nbsp;instructions.<br>
+If&nbsp;max_ticks&nbsp;is&nbsp;greater&nbsp;than&nbsp;zero,&nbsp;run&nbsp;for&nbsp;no&nbsp;more<br>
+than&nbsp;that&nbsp;many&nbsp;clock&nbsp;cycles.</tt></dd></dl>
+
+<dl><dt><a name="soft430-set_mem"><strong>set_mem</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-set_mem">set_mem</a>(func)<br>
+&nbsp;<br>
+Set&nbsp;the&nbsp;memory&nbsp;handler&nbsp;to&nbsp;func.&nbsp;When&nbsp;memory&nbsp;is<br>
+accessed,&nbsp;func&nbsp;will&nbsp;be&nbsp;called&nbsp;as:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;&lt;-&nbsp;func(addr,&nbsp;val,&nbsp;isWrite,&nbsp;isWord)<br>
+&nbsp;<br>
+and&nbsp;must&nbsp;return&nbsp;an&nbsp;integer&nbsp;or&nbsp;raise&nbsp;an&nbsp;exception.<br>
+addr&nbsp;is&nbsp;the&nbsp;mem&nbsp;address&nbsp;to&nbsp;be&nbsp;accessed.&nbsp;val&nbsp;is&nbsp;a<br>
+byte&nbsp;value&nbsp;to&nbsp;be&nbsp;stored&nbsp;if&nbsp;isWrite&nbsp;is&nbsp;nonzero.<br>
+isWrite&nbsp;is&nbsp;nonzero&nbsp;if&nbsp;a&nbsp;write&nbsp;is&nbsp;being&nbsp;requested;<br>
+it&nbsp;is&nbsp;zero&nbsp;for&nbsp;read&nbsp;requests.&nbsp;isWord&nbsp;is&nbsp;zero&nbsp;if&nbsp;a<br>
+byte&nbsp;access&nbsp;is&nbsp;requested&nbsp;and&nbsp;nonzero&nbsp;for&nbsp;a&nbsp;word&nbsp;access.<br>
+&nbsp;<br>
+For&nbsp;word&nbsp;accesses,&nbsp;the&nbsp;high&nbsp;byte&nbsp;(at&nbsp;the&nbsp;odd&nbsp;address)<br>
+will&nbsp;be&nbsp;requested&nbsp;first,&nbsp;followed&nbsp;immediately&nbsp;by&nbsp;a<br>
+request&nbsp;for&nbsp;the&nbsp;low&nbsp;byte&nbsp;(at&nbsp;the&nbsp;even&nbsp;address).&nbsp;this<br>
+second&nbsp;request&nbsp;does&nbsp;not&nbsp;occur&nbsp;if&nbsp;an&nbsp;exception&nbsp;is<br>
+raised&nbsp;during&nbsp;the&nbsp;first&nbsp;request.</tt></dd></dl>
+
+<dl><dt><a name="soft430-set_prf"><strong>set_prf</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-set_prf">set_prf</a>(func)<br>
+&nbsp;<br>
+Set&nbsp;the&nbsp;profile&nbsp;handler&nbsp;to&nbsp;func.&nbsp;After&nbsp;each&nbsp;instruction<br>
+is&nbsp;executed,&nbsp;func&nbsp;will&nbsp;be&nbsp;called&nbsp;as:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;func(op,&nbsp;ticks)<br>
+&nbsp;<br>
+The&nbsp;return&nbsp;value&nbsp;of&nbsp;func&nbsp;is&nbsp;ignored.&nbsp;op&nbsp;will&nbsp;be&nbsp;one<br>
+of&nbsp;the&nbsp;MSP430_INSN_xyz&nbsp;constants&nbsp;and&nbsp;ticks&nbsp;will&nbsp;be<br>
+the&nbsp;number&nbsp;of&nbsp;clocks&nbsp;used&nbsp;by&nbsp;this&nbsp;instruction.</tt></dd></dl>
+
+<dl><dt><a name="soft430-set_reg"><strong>set_reg</strong></a>(...)</dt><dd><tt>setreg(regnum,&nbsp;val)<br>
+&nbsp;<br>
+store&nbsp;val&nbsp;into&nbsp;a&nbsp;register.</tt></dd></dl>
+
+<dl><dt><a name="soft430-set_rgf"><strong>set_rgf</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-set_rgf">set_rgf</a>(func)<br>
+&nbsp;<br>
+Set&nbsp;the&nbsp;register&nbsp;handler&nbsp;to&nbsp;func.&nbsp;When&nbsp;a&nbsp;register&nbsp;is<br>
+accessed,&nbsp;func&nbsp;will&nbsp;be&nbsp;called&nbsp;as:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;&lt;-&nbsp;func(reg,&nbsp;val,&nbsp;isWrite)<br>
+&nbsp;<br>
+and&nbsp;must&nbsp;return&nbsp;an&nbsp;integer&nbsp;or&nbsp;raise&nbsp;an&nbsp;exception.<br>
+reg&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;the&nbsp;register&nbsp;to&nbsp;be&nbsp;accessed.<br>
+val&nbsp;is&nbsp;a&nbsp;word&nbsp;value&nbsp;to&nbsp;be&nbsp;stored&nbsp;if&nbsp;isWrite&nbsp;is&nbsp;nonzero.<br>
+isWrite&nbsp;is&nbsp;nonzero&nbsp;if&nbsp;a&nbsp;write&nbsp;is&nbsp;being&nbsp;requested;<br>
+it&nbsp;is&nbsp;zero&nbsp;for&nbsp;read&nbsp;requests.</tt></dd></dl>
+
+<dl><dt><a name="soft430-set_sfr"><strong>set_sfr</strong></a>(...)</dt><dd><tt>setsfr(func)<br>
+&nbsp;<br>
+Set&nbsp;the&nbsp;SFR&nbsp;handler&nbsp;to&nbsp;func.&nbsp;When&nbsp;any&nbsp;SFR&nbsp;is<br>
+accessed,&nbsp;func&nbsp;will&nbsp;be&nbsp;called&nbsp;as:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;val&nbsp;&lt;-&nbsp;func(addr,&nbsp;val,&nbsp;isWrite,&nbsp;isWord)<br>
+&nbsp;<br>
+and&nbsp;must&nbsp;return&nbsp;an&nbsp;integer&nbsp;or&nbsp;raise&nbsp;an&nbsp;exception.<br>
+addr&nbsp;is&nbsp;the&nbsp;sfr&nbsp;address&nbsp;to&nbsp;be&nbsp;accessed.&nbsp;val&nbsp;is&nbsp;a<br>
+byte&nbsp;value&nbsp;to&nbsp;be&nbsp;stored&nbsp;if&nbsp;isWrite&nbsp;is&nbsp;nonzero.<br>
+isWrite&nbsp;is&nbsp;nonzero&nbsp;if&nbsp;a&nbsp;write&nbsp;is&nbsp;being&nbsp;requested;<br>
+it&nbsp;is&nbsp;zero&nbsp;for&nbsp;read&nbsp;requests.&nbsp;isWord&nbsp;is&nbsp;zero&nbsp;if&nbsp;a<br>
+byte&nbsp;access&nbsp;is&nbsp;requested&nbsp;and&nbsp;nonzero&nbsp;for&nbsp;a&nbsp;word&nbsp;access.<br>
+&nbsp;<br>
+For&nbsp;word&nbsp;accesses,&nbsp;the&nbsp;high&nbsp;byte&nbsp;(at&nbsp;the&nbsp;odd&nbsp;address)<br>
+will&nbsp;be&nbsp;requested&nbsp;first,&nbsp;followed&nbsp;immediately&nbsp;by&nbsp;a<br>
+request&nbsp;for&nbsp;the&nbsp;low&nbsp;byte&nbsp;(at&nbsp;the&nbsp;even&nbsp;address).&nbsp;this<br>
+second&nbsp;request&nbsp;does&nbsp;not&nbsp;occur&nbsp;if&nbsp;an&nbsp;exception&nbsp;is<br>
+raised&nbsp;during&nbsp;the&nbsp;first&nbsp;request.</tt></dd></dl>
+
+<dl><dt><a name="soft430-set_trp"><strong>set_trp</strong></a>(...)</dt><dd><tt>setrap(func)<br>
+&nbsp;<br>
+Set&nbsp;the&nbsp;trap&nbsp;handler&nbsp;to&nbsp;func.&nbsp;When&nbsp;a&nbsp;trap&nbsp;is<br>
+generated,&nbsp;func&nbsp;will&nbsp;be&nbsp;called&nbsp;as:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;func(val)<br>
+&nbsp;<br>
+The&nbsp;return&nbsp;value&nbsp;of&nbsp;func&nbsp;is&nbsp;ignored.&nbsp;Func<br>
+may&nbsp;raise&nbsp;an&nbsp;exception.<br>
+&nbsp;<br>
+Traps&nbsp;are&nbsp;generated&nbsp;by&nbsp;storing&nbsp;an&nbsp;immediate<br>
+word&nbsp;value&nbsp;to&nbsp;r3.</tt></dd></dl>
+
+<dl><dt><a name="soft430-sfr_byt"><strong>sfr_byt</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-sfr_byt">sfr_byt</a>(addr&nbsp;[,&nbsp;val])&nbsp;-&gt;&nbsp;val<br>
+&nbsp;<br>
+If&nbsp;val&nbsp;is&nbsp;omitted,&nbsp;return&nbsp;the&nbsp;current&nbsp;byte&nbsp;value&nbsp;of<br>
+the&nbsp;SFR&nbsp;addr;&nbsp;otherwise,&nbsp;store&nbsp;val&nbsp;into&nbsp;the&nbsp;SFR.</tt></dd></dl>
+
+<dl><dt><a name="soft430-sfr_nam"><strong>sfr_nam</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-sfr_nam">sfr_nam</a>(addr)&nbsp;-&gt;&nbsp;string|None<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;name&nbsp;for&nbsp;an&nbsp;SFR&nbsp;address.&nbsp;Returns<br>
+None&nbsp;is&nbsp;addr&nbsp;does&nbsp;not&nbsp;map&nbsp;to&nbsp;a&nbsp;defined&nbsp;SFR.</tt></dd></dl>
+
+<dl><dt><a name="soft430-sfr_wrd"><strong>sfr_wrd</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-sfr_byt">sfr_byt</a>(addr&nbsp;[,&nbsp;val])&nbsp;-&gt;&nbsp;val<br>
+&nbsp;<br>
+If&nbsp;val&nbsp;is&nbsp;omitted,&nbsp;return&nbsp;the&nbsp;current&nbsp;word&nbsp;value&nbsp;of<br>
+the&nbsp;SFR&nbsp;addr;&nbsp;otherwise,&nbsp;store&nbsp;val&nbsp;into&nbsp;the&nbsp;SFR.</tt></dd></dl>
+
+<dl><dt><a name="soft430-strerr"><strong>strerr</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-strerr">strerr</a>(code)&nbsp;-&gt;&nbsp;string<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;string&nbsp;description&nbsp;of&nbsp;an&nbsp;exception&nbsp;code.</tt></dd></dl>
+
+<dl><dt><a name="soft430-wfetch"><strong>wfetch</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-wfetch">wfetch</a>(addr)&nbsp;-&gt;&nbsp;value<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;word&nbsp;contents&nbsp;of&nbsp;addr.</tt></dd></dl>
+
+<dl><dt><a name="soft430-wstore"><strong>wstore</strong></a>(...)</dt><dd><tt><a href="#MSP430Type-wstore">wstore</a>(addr,&nbsp;value)<br>
+&nbsp;<br>
+Store&nbsp;the&nbsp;word&nbsp;value&nbsp;into&nbsp;addr.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>bw</strong></dt>
+<dd><tt>Last&nbsp;instruction&nbsp;byte&nbsp;flag</tt></dd>
+</dl>
+<dl><dt><strong>da</strong></dt>
+<dd><tt>Destination&nbsp;address&nbsp;mode</tt></dd>
+</dl>
+<dl><dt><strong>daddr</strong></dt>
+<dd><tt>Last&nbsp;instruction&nbsp;destination&nbsp;address</tt></dd>
+</dl>
+<dl><dt><strong>dreg</strong></dt>
+<dd><tt>Destination&nbsp;register</tt></dd>
+</dl>
+<dl><dt><strong>exc_info</strong></dt>
+<dd><tt>Return&nbsp;last&nbsp;MSP430&nbsp;exception&nbsp;data&nbsp;as&nbsp;a&nbsp;4-tuple<br>
+&nbsp;<br>
+(exc#,&nbsp;arg1,&nbsp;arg2,&nbsp;line#)</tt></dd>
+</dl>
+<dl><dt><strong>in_exec</strong></dt>
+<dd><tt>Nonzero&nbsp;if&nbsp;and&nbsp;only&nbsp;if&nbsp;CPU&nbsp;is&nbsp;fetching&nbsp;an&nbsp;instruction</tt></dd>
+</dl>
+<dl><dt><strong>insns</strong></dt>
+<dd><tt>Cumulative&nbsp;number&nbsp;of&nbsp;instructions&nbsp;executed</tt></dd>
+</dl>
+<dl><dt><strong>iticks</strong></dt>
+<dd><tt>Last&nbsp;instruction&nbsp;clock&nbsp;count</tt></dd>
+</dl>
+<dl><dt><strong>last_pc</strong></dt>
+<dd><tt>PC&nbsp;for&nbsp;last&nbsp;successfully&nbsp;decoded&nbsp;instruction</tt></dd>
+</dl>
+<dl><dt><strong>mask</strong></dt>
+<dd><tt>Last&nbsp;instruction&nbsp;mask</tt></dd>
+</dl>
+<dl><dt><strong>op</strong></dt>
+<dd><tt>Last&nbsp;instruction&nbsp;number</tt></dd>
+</dl>
+<dl><dt><strong>op_ndx</strong></dt>
+<dd><tt>Number&nbsp;of&nbsp;words&nbsp;in&nbsp;current/last&nbsp;instruction</tt></dd>
+</dl>
+<dl><dt><strong>opcode</strong></dt>
+<dd><tt>Opcode&nbsp;words&nbsp;in&nbsp;current/last&nbsp;instruction</tt></dd>
+</dl>
+<dl><dt><strong>penable</strong></dt>
+<dd><tt>Profiler&nbsp;deferred-enable&nbsp;status</tt></dd>
+</dl>
+<dl><dt><strong>profile</strong></dt>
+<dd><tt>Profiler&nbsp;enable&nbsp;status</tt></dd>
+</dl>
+<dl><dt><strong>res</strong></dt>
+<dd><tt>Last&nbsp;instruction&nbsp;result</tt></dd>
+</dl>
+<dl><dt><strong>sa</strong></dt>
+<dd><tt>Source&nbsp;address&nbsp;mode</tt></dd>
+</dl>
+<dl><dt><strong>sign</strong></dt>
+<dd><tt>Last&nbsp;instruction&nbsp;sign</tt></dd>
+</dl>
+<dl><dt><strong>sreg</strong></dt>
+<dd><tt>Source&nbsp;register</tt></dd>
+</dl>
+<dl><dt><strong>ticks</strong></dt>
+<dd><tt>Cumulative&nbsp;number&nbsp;of&nbsp;CPU&nbsp;clocks</tt></dd>
+</dl>
+<dl><dt><strong>type</strong></dt>
+<dd><tt>Last&nbsp;instruction&nbsp;type</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="error">class <strong>error</strong></a>(<a href="exceptions.html#RuntimeError">exceptions.RuntimeError</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="_soft430.html#error">error</a></dd>
+<dd><a href="exceptions.html#RuntimeError">exceptions.RuntimeError</a></dd>
+<dd><a href="exceptions.html#StandardError">exceptions.StandardError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="exceptions.html#RuntimeError">exceptions.RuntimeError</a>:<br>
+<dl><dt><a name="error-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#error-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#RuntimeError">exceptions.RuntimeError</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x6cb88850&gt;<dd><tt>T.<a href="#error-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="error-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#error-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="error-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#error-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="error-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#error-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="error-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="error-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#error-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="error-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#error-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="error-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="error-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#error-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+<dd><tt>exception&nbsp;message</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-new"><strong>new</strong></a>(...)</dt><dd><tt><a href="#-new">new</a>()&nbsp;-&gt;&nbsp;cpu&nbsp;<a href="__builtin__.html#object">object</a><br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;new&nbsp;MSP430F1611&nbsp;CPU&nbsp;<a href="__builtin__.html#object">object</a>.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>MSP430_BSL_BASE</strong> = 3072<br>
+<strong>MSP430_C_MASK</strong> = 1<br>
+<strong>MSP430_EXC_BAD_ADDRMODE</strong> = 6<br>
+<strong>MSP430_EXC_BAD_ALIGN</strong> = 1<br>
+<strong>MSP430_EXC_BAD_BYTE</strong> = 15<br>
+<strong>MSP430_EXC_BAD_EXC</strong> = 4<br>
+<strong>MSP430_EXC_BAD_EXEC</strong> = 11<br>
+<strong>MSP430_EXC_BAD_IHEX</strong> = 20<br>
+<strong>MSP430_EXC_BAD_REG</strong> = 8<br>
+<strong>MSP430_EXC_BAD_SFR</strong> = 17<br>
+<strong>MSP430_EXC_BAD_SR</strong> = 2<br>
+<strong>MSP430_EXC_BAD_STORE</strong> = 10<br>
+<strong>MSP430_EXC_BAD_TRAP</strong> = 16<br>
+<strong>MSP430_EXC_BAD_WORD</strong> = 9<br>
+<strong>MSP430_EXC_CNT</strong> = 24<br>
+<strong>MSP430_EXC_CPU_TIME</strong> = 14<br>
+<strong>MSP430_EXC_EINVAL</strong> = 12<br>
+<strong>MSP430_EXC_ENOSYS</strong> = 3<br>
+<strong>MSP430_EXC_ENXIO</strong> = 5<br>
+<strong>MSP430_EXC_FC_FAULT</strong> = 19<br>
+<strong>MSP430_EXC_NULL_CTX</strong> = 7<br>
+<strong>MSP430_EXC_OS_ERROR</strong> = 13<br>
+<strong>MSP430_EXC_PYTHON_FAULT</strong> = 21<br>
+<strong>MSP430_EXC_WDT_FAULT</strong> = 18<br>
+<strong>MSP430_INSN_ADD</strong> = 2<br>
+<strong>MSP430_INSN_ADDC</strong> = 3<br>
+<strong>MSP430_INSN_ALL</strong> = 0<br>
+<strong>MSP430_INSN_AND</strong> = 12<br>
+<strong>MSP430_INSN_BIC</strong> = 9<br>
+<strong>MSP430_INSN_BIS</strong> = 10<br>
+<strong>MSP430_INSN_BIT</strong> = 8<br>
+<strong>MSP430_INSN_CALL</strong> = 18<br>
+<strong>MSP430_INSN_CMP</strong> = 6<br>
+<strong>MSP430_INSN_CNT</strong> = 27<br>
+<strong>MSP430_INSN_DADD</strong> = 7<br>
+<strong>MSP430_INSN_JC</strong> = 23<br>
+<strong>MSP430_INSN_JGE</strong> = 25<br>
+<strong>MSP430_INSN_JL</strong> = 26<br>
+<strong>MSP430_INSN_JMP</strong> = 27<br>
+<strong>MSP430_INSN_JN</strong> = 24<br>
+<strong>MSP430_INSN_JNC</strong> = 22<br>
+<strong>MSP430_INSN_JNZ</strong> = 20<br>
+<strong>MSP430_INSN_JZ</strong> = 21<br>
+<strong>MSP430_INSN_MOV</strong> = 1<br>
+<strong>MSP430_INSN_PUSH</strong> = 17<br>
+<strong>MSP430_INSN_RETI</strong> = 19<br>
+<strong>MSP430_INSN_RRA</strong> = 15<br>
+<strong>MSP430_INSN_RRC</strong> = 13<br>
+<strong>MSP430_INSN_SUB</strong> = 5<br>
+<strong>MSP430_INSN_SUBC</strong> = 4<br>
+<strong>MSP430_INSN_SWPB</strong> = 14<br>
+<strong>MSP430_INSN_SXT</strong> = 16<br>
+<strong>MSP430_INSN_TYPE1</strong> = 1<br>
+<strong>MSP430_INSN_TYPE2</strong> = 2<br>
+<strong>MSP430_INSN_TYPE3</strong> = 3<br>
+<strong>MSP430_INSN_XOR</strong> = 11<br>
+<strong>MSP430_I_MASK</strong> = 8<br>
+<strong>MSP430_NPROG</strong> = 49152<br>
+<strong>MSP430_NRAM</strong> = 10240<br>
+<strong>MSP430_NREGS</strong> = 16<br>
+<strong>MSP430_NSFR</strong> = 512<br>
+<strong>MSP430_N_MASK</strong> = 4<br>
+<strong>MSP430_PROFILE_CLEAR</strong> = 0<br>
+<strong>MSP430_PROFILE_NEXT</strong> = 1<br>
+<strong>MSP430_PROFILE_NOW</strong> = -1<br>
+<strong>MSP430_PROFILE_OFF</strong> = 0<br>
+<strong>MSP430_RAM_BASE</strong> = 4352<br>
+<strong>MSP430_ROM_BASE</strong> = 16384<br>
+<strong>MSP430_SUCCESS</strong> = 0<br>
+<strong>MSP430_UF_BASE</strong> = 4096<br>
+<strong>MSP430_V_MASK</strong> = 256<br>
+<strong>MSP430_Z_MASK</strong> = 2<br>
+<strong>__version__</strong> = '$Id: _soft430.html,v 1.3 2007/08/20 21:12:37 DEV Exp $'</td></tr></table>
+</body></html>

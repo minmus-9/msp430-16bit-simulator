@@ -1,0 +1,780 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module py430</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>py430</strong></big></big> (version $Id: py430.html,v 1.3 2007/08/20 21:12:37 DEV Exp $)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/dev/msp/build/lib.cygwin-1.5.21-i686-2.5/py430.py">/home/dev/msp/build/lib.cygwin-1.5.21-i686-2.5/py430.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;module&nbsp;implements&nbsp;a&nbsp;profiling&nbsp;<a href="#MSP430F1611">MSP430F1611</a>&nbsp;simulator.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="_py430.html">_py430</a><br>
+</td><td width="25%" valign=top><a href="_soft430.html">_soft430</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="py430.html#InsnBase">InsnBase</a>
+</font></dt><dt><font face="helvetica, arial"><a href="py430.html#MSP430Loader">MSP430Loader</a>
+</font></dt><dt><font face="helvetica, arial"><a href="py430.html#MSP430SFR">MSP430SFR</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="py430.html#MSP430F1611">MSP430F1611</a>(<a href="py430.html#MSP430SFR">MSP430SFR</a>, <a href="py430.html#MSP430Loader">MSP430Loader</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="py430.html#Profile">Profile</a>
+</font></dt><dt><font face="helvetica, arial"><a href="py430.html#Subarray">Subarray</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="py430.html#Breakpoint">Breakpoint</a>
+</font></dt><dt><font face="helvetica, arial"><a href="py430.html#CallCount">CallCount</a>
+</font></dt><dt><font face="helvetica, arial"><a href="py430.html#InsnCount">InsnCount</a>(<a href="py430.html#Subarray">Subarray</a>, <a href="py430.html#InsnBase">InsnBase</a>)
+</font></dt><dt><font face="helvetica, arial"><a href="py430.html#InsnTicks">InsnTicks</a>(<a href="py430.html#Subarray">Subarray</a>, <a href="py430.html#InsnBase">InsnBase</a>)
+</font></dt><dt><font face="helvetica, arial"><a href="py430.html#JumpCount">JumpCount</a>
+</font></dt><dt><font face="helvetica, arial"><a href="py430.html#MemCount">MemCount</a>
+</font></dt><dt><font face="helvetica, arial"><a href="py430.html#PCCount">PCCount</a>
+</font></dt><dt><font face="helvetica, arial"><a href="py430.html#PCTicks">PCTicks</a>
+</font></dt><dt><font face="helvetica, arial"><a href="py430.html#SPRange">SPRange</a>
+</font></dt><dt><font face="helvetica, arial"><a href="py430.html#SPSet">SPSet</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="py430.html#VBase">VBase</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="py430.html#ByteMem">ByteMem</a>
+</font></dt><dt><font face="helvetica, arial"><a href="py430.html#Regs">Regs</a>
+</font></dt><dt><font face="helvetica, arial"><a href="py430.html#WordMem">WordMem</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Breakpoint">class <strong>Breakpoint</strong></a>(<a href="py430.html#Subarray">Subarray</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>breakpoints&nbsp;by&nbsp;address.&nbsp;if&nbsp;an&nbsp;element&nbsp;of<br>
+this&nbsp;array&nbsp;is&nbsp;nonzero,&nbsp;any&nbsp;memory&nbsp;access<br>
+to&nbsp;that&nbsp;address&nbsp;raises&nbsp;MSP430_EXC_DEBUG.<br>
+&nbsp;<br>
+note&nbsp;that&nbsp;recovery&nbsp;can&nbsp;be&nbsp;tricky;&nbsp;e.g.,<br>
+trapping&nbsp;memory&nbsp;accesses&nbsp;during&nbsp;instruction<br>
+decode&nbsp;can&nbsp;require&nbsp;fancy&nbsp;recovery.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Data and other attributes defined here:<br>
+<dl><dt><strong>OFS</strong> = 223307</dl>
+
+<dl><dt><strong>SIZE</strong> = 65536</dl>
+
+<hr>
+Methods inherited from <a href="py430.html#Subarray">Subarray</a>:<br>
+<dl><dt><a name="Breakpoint-__getitem__"><strong>__getitem__</strong></a>(self, item)</dt><dd><tt>fetch&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="Breakpoint-__init__"><strong>__init__</strong></a>(self, obj)</dt><dd><tt>create&nbsp;subarray&nbsp;in&nbsp;obj</tt></dd></dl>
+
+<dl><dt><a name="Breakpoint-__len__"><strong>__len__</strong></a>(self)</dt><dd><tt>return&nbsp;our&nbsp;length</tt></dd></dl>
+
+<dl><dt><a name="Breakpoint-__setitem__"><strong>__setitem__</strong></a>(self, item, val)</dt><dd><tt>store&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="Breakpoint-clear"><strong>clear</strong></a>(self)</dt><dd><tt>zero&nbsp;ourself&nbsp;out</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ByteMem">class <strong>ByteMem</strong></a>(<a href="py430.html#VBase">VBase</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>access&nbsp;cpu&nbsp;address&nbsp;space&nbsp;as&nbsp;bytes<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="ByteMem-__getitem__"><strong>__getitem__</strong></a>(self, addr)</dt><dd><tt>fetch&nbsp;memory</tt></dd></dl>
+
+<dl><dt><a name="ByteMem-__len__"><strong>__len__</strong></a>(self)</dt><dd><tt>return&nbsp;64k</tt></dd></dl>
+
+<dl><dt><a name="ByteMem-__setitem__"><strong>__setitem__</strong></a>(self, addr, val)</dt><dd><tt>store&nbsp;memory</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="py430.html#VBase">VBase</a>:<br>
+<dl><dt><a name="ByteMem-__init__"><strong>__init__</strong></a>(self, cpu)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CallCount">class <strong>CallCount</strong></a>(<a href="py430.html#Subarray">Subarray</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>call&nbsp;counts&nbsp;by&nbsp;(target&nbsp;addr&nbsp;&gt;&gt;&nbsp;1)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Data and other attributes defined here:<br>
+<dl><dt><strong>OFS</strong> = 190539</dl>
+
+<dl><dt><strong>SIZE</strong> = 32768</dl>
+
+<hr>
+Methods inherited from <a href="py430.html#Subarray">Subarray</a>:<br>
+<dl><dt><a name="CallCount-__getitem__"><strong>__getitem__</strong></a>(self, item)</dt><dd><tt>fetch&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="CallCount-__init__"><strong>__init__</strong></a>(self, obj)</dt><dd><tt>create&nbsp;subarray&nbsp;in&nbsp;obj</tt></dd></dl>
+
+<dl><dt><a name="CallCount-__len__"><strong>__len__</strong></a>(self)</dt><dd><tt>return&nbsp;our&nbsp;length</tt></dd></dl>
+
+<dl><dt><a name="CallCount-__setitem__"><strong>__setitem__</strong></a>(self, item, val)</dt><dd><tt>store&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="CallCount-clear"><strong>clear</strong></a>(self)</dt><dd><tt>zero&nbsp;ourself&nbsp;out</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="InsnBase">class <strong>InsnBase</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>abstract&nbsp;base&nbsp;for&nbsp;per-instruction&nbsp;profile&nbsp;details<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="InsnBase-__getattr__"><strong>__getattr__</strong></a>(self, attr)</dt><dd><tt>fetch&nbsp;data&nbsp;by&nbsp;core&nbsp;insn&nbsp;mnemonic</tt></dd></dl>
+
+<dl><dt><a name="InsnBase-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><tt>iterator&nbsp;that&nbsp;returns&nbsp;(name,&nbsp;quan)&nbsp;in&nbsp;MSP430_INSN_*<br>
+order&nbsp;(the&nbsp;first&nbsp;name&nbsp;will&nbsp;be&nbsp;"all").&nbsp;the&nbsp;interpretation<br>
+of&nbsp;quan&nbsp;is&nbsp;left&nbsp;to&nbsp;the&nbsp;subclass.</tt></dd></dl>
+
+<dl><dt><a name="InsnBase-__setattr__"><strong>__setattr__</strong></a>(self, attr, val)</dt><dd><tt>store&nbsp;data&nbsp;by&nbsp;core&nbsp;insn&nbsp;mnemonic</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="InsnCount">class <strong>InsnCount</strong></a>(<a href="py430.html#Subarray">Subarray</a>, <a href="py430.html#InsnBase">InsnBase</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>per-core-instruction&nbsp;counts&nbsp;by&nbsp;instruction<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="py430.html#InsnCount">InsnCount</a></dd>
+<dd><a href="py430.html#Subarray">Subarray</a></dd>
+<dd><a href="py430.html#InsnBase">InsnBase</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>OFS</strong> = 92179</dl>
+
+<dl><dt><strong>SIZE</strong> = 28</dl>
+
+<hr>
+Methods inherited from <a href="py430.html#Subarray">Subarray</a>:<br>
+<dl><dt><a name="InsnCount-__getitem__"><strong>__getitem__</strong></a>(self, item)</dt><dd><tt>fetch&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="InsnCount-__init__"><strong>__init__</strong></a>(self, obj)</dt><dd><tt>create&nbsp;subarray&nbsp;in&nbsp;obj</tt></dd></dl>
+
+<dl><dt><a name="InsnCount-__len__"><strong>__len__</strong></a>(self)</dt><dd><tt>return&nbsp;our&nbsp;length</tt></dd></dl>
+
+<dl><dt><a name="InsnCount-__setitem__"><strong>__setitem__</strong></a>(self, item, val)</dt><dd><tt>store&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="InsnCount-clear"><strong>clear</strong></a>(self)</dt><dd><tt>zero&nbsp;ourself&nbsp;out</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="py430.html#InsnBase">InsnBase</a>:<br>
+<dl><dt><a name="InsnCount-__getattr__"><strong>__getattr__</strong></a>(self, attr)</dt><dd><tt>fetch&nbsp;data&nbsp;by&nbsp;core&nbsp;insn&nbsp;mnemonic</tt></dd></dl>
+
+<dl><dt><a name="InsnCount-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><tt>iterator&nbsp;that&nbsp;returns&nbsp;(name,&nbsp;quan)&nbsp;in&nbsp;MSP430_INSN_*<br>
+order&nbsp;(the&nbsp;first&nbsp;name&nbsp;will&nbsp;be&nbsp;"all").&nbsp;the&nbsp;interpretation<br>
+of&nbsp;quan&nbsp;is&nbsp;left&nbsp;to&nbsp;the&nbsp;subclass.</tt></dd></dl>
+
+<dl><dt><a name="InsnCount-__setattr__"><strong>__setattr__</strong></a>(self, attr, val)</dt><dd><tt>store&nbsp;data&nbsp;by&nbsp;core&nbsp;insn&nbsp;mnemonic</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="InsnTicks">class <strong>InsnTicks</strong></a>(<a href="py430.html#Subarray">Subarray</a>, <a href="py430.html#InsnBase">InsnBase</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>per-core-instruction&nbsp;ticks&nbsp;by&nbsp;instruction<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="py430.html#InsnTicks">InsnTicks</a></dd>
+<dd><a href="py430.html#Subarray">Subarray</a></dd>
+<dd><a href="py430.html#InsnBase">InsnBase</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>OFS</strong> = 92207</dl>
+
+<dl><dt><strong>SIZE</strong> = 28</dl>
+
+<hr>
+Methods inherited from <a href="py430.html#Subarray">Subarray</a>:<br>
+<dl><dt><a name="InsnTicks-__getitem__"><strong>__getitem__</strong></a>(self, item)</dt><dd><tt>fetch&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="InsnTicks-__init__"><strong>__init__</strong></a>(self, obj)</dt><dd><tt>create&nbsp;subarray&nbsp;in&nbsp;obj</tt></dd></dl>
+
+<dl><dt><a name="InsnTicks-__len__"><strong>__len__</strong></a>(self)</dt><dd><tt>return&nbsp;our&nbsp;length</tt></dd></dl>
+
+<dl><dt><a name="InsnTicks-__setitem__"><strong>__setitem__</strong></a>(self, item, val)</dt><dd><tt>store&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="InsnTicks-clear"><strong>clear</strong></a>(self)</dt><dd><tt>zero&nbsp;ourself&nbsp;out</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="py430.html#InsnBase">InsnBase</a>:<br>
+<dl><dt><a name="InsnTicks-__getattr__"><strong>__getattr__</strong></a>(self, attr)</dt><dd><tt>fetch&nbsp;data&nbsp;by&nbsp;core&nbsp;insn&nbsp;mnemonic</tt></dd></dl>
+
+<dl><dt><a name="InsnTicks-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><tt>iterator&nbsp;that&nbsp;returns&nbsp;(name,&nbsp;quan)&nbsp;in&nbsp;MSP430_INSN_*<br>
+order&nbsp;(the&nbsp;first&nbsp;name&nbsp;will&nbsp;be&nbsp;"all").&nbsp;the&nbsp;interpretation<br>
+of&nbsp;quan&nbsp;is&nbsp;left&nbsp;to&nbsp;the&nbsp;subclass.</tt></dd></dl>
+
+<dl><dt><a name="InsnTicks-__setattr__"><strong>__setattr__</strong></a>(self, attr, val)</dt><dd><tt>store&nbsp;data&nbsp;by&nbsp;core&nbsp;insn&nbsp;mnemonic</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="JumpCount">class <strong>JumpCount</strong></a>(<a href="py430.html#Subarray">Subarray</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>jump&nbsp;counts&nbsp;by&nbsp;(target&nbsp;addr&nbsp;&gt;&gt;&nbsp;1)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Data and other attributes defined here:<br>
+<dl><dt><strong>OFS</strong> = 157771</dl>
+
+<dl><dt><strong>SIZE</strong> = 32768</dl>
+
+<hr>
+Methods inherited from <a href="py430.html#Subarray">Subarray</a>:<br>
+<dl><dt><a name="JumpCount-__getitem__"><strong>__getitem__</strong></a>(self, item)</dt><dd><tt>fetch&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="JumpCount-__init__"><strong>__init__</strong></a>(self, obj)</dt><dd><tt>create&nbsp;subarray&nbsp;in&nbsp;obj</tt></dd></dl>
+
+<dl><dt><a name="JumpCount-__len__"><strong>__len__</strong></a>(self)</dt><dd><tt>return&nbsp;our&nbsp;length</tt></dd></dl>
+
+<dl><dt><a name="JumpCount-__setitem__"><strong>__setitem__</strong></a>(self, item, val)</dt><dd><tt>store&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="JumpCount-clear"><strong>clear</strong></a>(self)</dt><dd><tt>zero&nbsp;ourself&nbsp;out</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MSP430F1611">class <strong>MSP430F1611</strong></a>(<a href="py430.html#MSP430SFR">MSP430SFR</a>, <a href="py430.html#MSP430Loader">MSP430Loader</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;implements&nbsp;the&nbsp;<a href="#MSP430F1611">MSP430F1611</a>&nbsp;CPU&nbsp;core.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="py430.html#MSP430F1611">MSP430F1611</a></dd>
+<dd><a href="py430.html#MSP430SFR">MSP430SFR</a></dd>
+<dd><a href="py430.html#MSP430Loader">MSP430Loader</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MSP430F1611-__del__"><strong>__del__</strong></a>(self)</dt><dd><tt>destroy&nbsp;ourself</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-__getattr__"><strong>__getattr__</strong></a>(self, attr)</dt><dd><tt>pass&nbsp;attribute&nbsp;requests&nbsp;on&nbsp;the&nbsp;underlying&nbsp;C&nbsp;CPU&nbsp;implementation</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>create&nbsp;a&nbsp;new&nbsp;CPU&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-initialize"><strong>initialize</strong></a>(self)</dt><dd><tt>Clear&nbsp;all&nbsp;profiling&nbsp;data,&nbsp;enable<br>
+profiling,&nbsp;and&nbsp;load&nbsp;the&nbsp;reset&nbsp;vector<br>
+into&nbsp;the&nbsp;pc&nbsp;(r0).</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-load_ihex"><strong>load_ihex</strong></a>(self, filename)</dt><dd><tt>load&nbsp;an&nbsp;Intel&nbsp;hex&nbsp;file&nbsp;and&nbsp;initialize<br>
+the&nbsp;cpu.</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-reset"><strong>reset</strong></a>(self)</dt><dd><tt>load&nbsp;the&nbsp;pc&nbsp;(r0)&nbsp;with&nbsp;the&nbsp;word&nbsp;contents&nbsp;of&nbsp;0xfffe</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-restore"><strong>restore</strong></a>(self, filename)</dt><dd><tt>restore&nbsp;the&nbsp;cpu&nbsp;state&nbsp;from&nbsp;a&nbsp;file</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-run"><strong>run</strong></a>(self, maxi<font color="#909090">=0</font>, maxc<font color="#909090">=0</font>)</dt><dd><tt>run&nbsp;code&nbsp;on&nbsp;the&nbsp;CPU.&nbsp;if&nbsp;maxi&nbsp;is&nbsp;positive,&nbsp;run<br>
+at&nbsp;most&nbsp;maxi&nbsp;instructions.&nbsp;if&nbsp;maxc&nbsp;is&nbsp;positive,<br>
+run&nbsp;for&nbsp;at&nbsp;most&nbsp;maxc&nbsp;clock&nbsp;cycles.&nbsp;if&nbsp;both&nbsp;maxi<br>
+and&nbsp;maxc&nbsp;are&nbsp;zero,&nbsp;run&nbsp;until&nbsp;an&nbsp;exception&nbsp;is<br>
+raised&nbsp;or&nbsp;the&nbsp;CPU&nbsp;halts.<br>
+&nbsp;<br>
+returns&nbsp;zero&nbsp;on&nbsp;CPU&nbsp;halt;&nbsp;otherwise,&nbsp;raises&nbsp;an<br>
+exception.</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-save"><strong>save</strong></a>(self, filename)</dt><dd><tt>dump&nbsp;the&nbsp;cpu&nbsp;state&nbsp;to&nbsp;a&nbsp;file</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-sfr_name"><strong>sfr_name</strong></a>(self, addr)</dt><dd><tt>return&nbsp;name&nbsp;of&nbsp;SFR&nbsp;corresponding&nbsp;to&nbsp;address</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-strerror"><strong>strerror</strong></a>(self, code)</dt><dd><tt>return&nbsp;error&nbsp;description&nbsp;for&nbsp;MSP430_EXC_*&nbsp;code</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="py430.html#MSP430Loader">MSP430Loader</a>:<br>
+<dl><dt><a name="MSP430F1611-S_to_exe"><strong>S_to_exe</strong></a> = s_to_exe(self, s, exe, *opts)</dt><dd><tt>internal:&nbsp;compile&nbsp;.s&nbsp;and&nbsp;.S&nbsp;to&nbsp;.exe</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-asm_to_exe"><strong>asm_to_exe</strong></a>(self, asm, exe, *opts)</dt><dd><tt>internal:&nbsp;compile&nbsp;.asm&nbsp;to&nbsp;.exe</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-c_to_exe"><strong>c_to_exe</strong></a>(self, c, exe, *opts)</dt><dd><tt>internal:&nbsp;compile&nbsp;.c&nbsp;to&nbsp;.exe</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-exe_to_hex"><strong>exe_to_hex</strong></a>(self, exe, hex)</dt><dd><tt>internal:&nbsp;run&nbsp;msp430-objcopy&nbsp;on&nbsp;a&nbsp;.exe</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-load"><strong>load</strong></a>(self, fname, *opts)</dt><dd><tt>load&nbsp;a&nbsp;file&nbsp;into&nbsp;the&nbsp;cpu</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-load_syms"><strong>load_syms</strong></a>(self, exe)</dt><dd><tt>attempt&nbsp;to&nbsp;load&nbsp;symbol/debugging&nbsp;information&nbsp;from&nbsp;exe</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-parse_syms"><strong>parse_syms</strong></a>(self, symtab, finfo)</dt><dd><tt>parse&nbsp;symbol/debugging&nbsp;information&nbsp;into&nbsp;the&nbsp;following<br>
+data&nbsp;structure:<br>
+&nbsp;<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;addr:&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"addr":&nbsp;addr,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"base":&nbsp;&lt;first&nbsp;addr&nbsp;for&nbsp;object&gt;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"size":&nbsp;&lt;size&nbsp;of&nbsp;object&gt;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name":&nbsp;&lt;name&nbsp;of&nbsp;object&gt;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":&nbsp;"function"&nbsp;or&nbsp;"object",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"file":&nbsp;&lt;filename&gt;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"line":&nbsp;&lt;line#&gt;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+&nbsp;<br>
+The&nbsp;"addr"&nbsp;key&nbsp;will&nbsp;always&nbsp;be&nbsp;filled&nbsp;in.&nbsp;If&nbsp;the<br>
+entry&nbsp;appears&nbsp;in&nbsp;the&nbsp;symbol&nbsp;table,&nbsp;the&nbsp;"base",<br>
+"size",&nbsp;"name",&nbsp;and&nbsp;"type"&nbsp;slots&nbsp;will&nbsp;be&nbsp;filled<br>
+in.&nbsp;If&nbsp;the&nbsp;entry&nbsp;appears&nbsp;in&nbsp;the&nbsp;debugging&nbsp;info,<br>
+the&nbsp;"file"&nbsp;and&nbsp;"line"&nbsp;slots&nbsp;will&nbsp;be&nbsp;filled&nbsp;in.<br>
+&nbsp;<br>
+Only&nbsp;type&nbsp;"F"&nbsp;and&nbsp;"O"&nbsp;objects&nbsp;are&nbsp;considered&nbsp;in<br>
+the&nbsp;symbol&nbsp;table&nbsp;(functions&nbsp;and&nbsp;data&nbsp;[in&nbsp;C]).<br>
+&nbsp;<br>
+Only&nbsp;entries&nbsp;corresponding&nbsp;to&nbsp;addresses&nbsp;less&nbsp;than<br>
+65504&nbsp;(the&nbsp;start&nbsp;of&nbsp;the&nbsp;interrupt&nbsp;vector&nbsp;table)<br>
+are&nbsp;considered.<br>
+&nbsp;<br>
+Consider&nbsp;using&nbsp;the&nbsp;bisect&nbsp;module&nbsp;to&nbsp;locate<br>
+entries&nbsp;in&nbsp;the&nbsp;returned&nbsp;object;&nbsp;i.e.,&nbsp;not&nbsp;all<br>
+addresses&nbsp;need&nbsp;be&nbsp;valid.</tt></dd></dl>
+
+<dl><dt><a name="MSP430F1611-s_to_exe"><strong>s_to_exe</strong></a>(self, s, exe, *opts)</dt><dd><tt>internal:&nbsp;compile&nbsp;.s&nbsp;and&nbsp;.S&nbsp;to&nbsp;.exe</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MSP430Loader">class <strong>MSP430Loader</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;mixin&nbsp;teaches&nbsp;the&nbsp;cpu&nbsp;to&nbsp;load<br>
+C&nbsp;(.c)&nbsp;files,&nbsp;assembler&nbsp;(.s,&nbsp;.S,<br>
+and&nbsp;.asm)&nbsp;files,&nbsp;and&nbsp;executable&nbsp;(.exe)<br>
+files.&nbsp;dot-s&nbsp;and&nbsp;dot-S&nbsp;files&nbsp;are&nbsp;run<br>
+through&nbsp;msp430-gcc;&nbsp;dot-asm&nbsp;files&nbsp;are<br>
+run&nbsp;through&nbsp;msp430-as.<br>
+&nbsp;<br>
+This&nbsp;mixin&nbsp;also&nbsp;attempts&nbsp;to&nbsp;load<br>
+symbol&nbsp;table&nbsp;and&nbsp;debugging&nbsp;information<br>
+from&nbsp;a&nbsp;.exe&nbsp;file&nbsp;with&nbsp;the&nbsp;same&nbsp;base<br>
+name.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="MSP430Loader-S_to_exe"><strong>S_to_exe</strong></a> = <a href="#MSP430Loader-s_to_exe">s_to_exe</a>(self, s, exe, *opts)</dt></dl>
+
+<dl><dt><a name="MSP430Loader-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>internal</tt></dd></dl>
+
+<dl><dt><a name="MSP430Loader-asm_to_exe"><strong>asm_to_exe</strong></a>(self, asm, exe, *opts)</dt><dd><tt>internal:&nbsp;compile&nbsp;.asm&nbsp;to&nbsp;.exe</tt></dd></dl>
+
+<dl><dt><a name="MSP430Loader-c_to_exe"><strong>c_to_exe</strong></a>(self, c, exe, *opts)</dt><dd><tt>internal:&nbsp;compile&nbsp;.c&nbsp;to&nbsp;.exe</tt></dd></dl>
+
+<dl><dt><a name="MSP430Loader-exe_to_hex"><strong>exe_to_hex</strong></a>(self, exe, hex)</dt><dd><tt>internal:&nbsp;run&nbsp;msp430-objcopy&nbsp;on&nbsp;a&nbsp;.exe</tt></dd></dl>
+
+<dl><dt><a name="MSP430Loader-load"><strong>load</strong></a>(self, fname, *opts)</dt><dd><tt>load&nbsp;a&nbsp;file&nbsp;into&nbsp;the&nbsp;cpu</tt></dd></dl>
+
+<dl><dt><a name="MSP430Loader-load_syms"><strong>load_syms</strong></a>(self, exe)</dt><dd><tt>attempt&nbsp;to&nbsp;load&nbsp;symbol/debugging&nbsp;information&nbsp;from&nbsp;exe</tt></dd></dl>
+
+<dl><dt><a name="MSP430Loader-parse_syms"><strong>parse_syms</strong></a>(self, symtab, finfo)</dt><dd><tt>parse&nbsp;symbol/debugging&nbsp;information&nbsp;into&nbsp;the&nbsp;following<br>
+data&nbsp;structure:<br>
+&nbsp;<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;addr:&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"addr":&nbsp;addr,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"base":&nbsp;&lt;first&nbsp;addr&nbsp;for&nbsp;object&gt;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"size":&nbsp;&lt;size&nbsp;of&nbsp;object&gt;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name":&nbsp;&lt;name&nbsp;of&nbsp;object&gt;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":&nbsp;"function"&nbsp;or&nbsp;"object",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"file":&nbsp;&lt;filename&gt;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"line":&nbsp;&lt;line#&gt;,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+}<br>
+&nbsp;<br>
+The&nbsp;"addr"&nbsp;key&nbsp;will&nbsp;always&nbsp;be&nbsp;filled&nbsp;in.&nbsp;If&nbsp;the<br>
+entry&nbsp;appears&nbsp;in&nbsp;the&nbsp;symbol&nbsp;table,&nbsp;the&nbsp;"base",<br>
+"size",&nbsp;"name",&nbsp;and&nbsp;"type"&nbsp;slots&nbsp;will&nbsp;be&nbsp;filled<br>
+in.&nbsp;If&nbsp;the&nbsp;entry&nbsp;appears&nbsp;in&nbsp;the&nbsp;debugging&nbsp;info,<br>
+the&nbsp;"file"&nbsp;and&nbsp;"line"&nbsp;slots&nbsp;will&nbsp;be&nbsp;filled&nbsp;in.<br>
+&nbsp;<br>
+Only&nbsp;type&nbsp;"F"&nbsp;and&nbsp;"O"&nbsp;objects&nbsp;are&nbsp;considered&nbsp;in<br>
+the&nbsp;symbol&nbsp;table&nbsp;(functions&nbsp;and&nbsp;data&nbsp;[in&nbsp;C]).<br>
+&nbsp;<br>
+Only&nbsp;entries&nbsp;corresponding&nbsp;to&nbsp;addresses&nbsp;less&nbsp;than<br>
+65504&nbsp;(the&nbsp;start&nbsp;of&nbsp;the&nbsp;interrupt&nbsp;vector&nbsp;table)<br>
+are&nbsp;considered.<br>
+&nbsp;<br>
+Consider&nbsp;using&nbsp;the&nbsp;bisect&nbsp;module&nbsp;to&nbsp;locate<br>
+entries&nbsp;in&nbsp;the&nbsp;returned&nbsp;object;&nbsp;i.e.,&nbsp;not&nbsp;all<br>
+addresses&nbsp;need&nbsp;be&nbsp;valid.</tt></dd></dl>
+
+<dl><dt><a name="MSP430Loader-s_to_exe"><strong>s_to_exe</strong></a>(self, s, exe, *opts)</dt><dd><tt>internal:&nbsp;compile&nbsp;.s&nbsp;and&nbsp;.S&nbsp;to&nbsp;.exe</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MSP430SFR">class <strong>MSP430SFR</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>implements&nbsp;some&nbsp;<a href="#MSP430F1611">MSP430F1611</a>&nbsp;peripherals<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="MSP430SFR-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>get&nbsp;ready</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MemCount">class <strong>MemCount</strong></a>(<a href="py430.html#Subarray">Subarray</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>memory&nbsp;access&nbsp;counts&nbsp;by&nbsp;address<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Data and other attributes defined here:<br>
+<dl><dt><strong>OFS</strong> = 92235</dl>
+
+<dl><dt><strong>SIZE</strong> = 65536</dl>
+
+<hr>
+Methods inherited from <a href="py430.html#Subarray">Subarray</a>:<br>
+<dl><dt><a name="MemCount-__getitem__"><strong>__getitem__</strong></a>(self, item)</dt><dd><tt>fetch&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="MemCount-__init__"><strong>__init__</strong></a>(self, obj)</dt><dd><tt>create&nbsp;subarray&nbsp;in&nbsp;obj</tt></dd></dl>
+
+<dl><dt><a name="MemCount-__len__"><strong>__len__</strong></a>(self)</dt><dd><tt>return&nbsp;our&nbsp;length</tt></dd></dl>
+
+<dl><dt><a name="MemCount-__setitem__"><strong>__setitem__</strong></a>(self, item, val)</dt><dd><tt>store&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="MemCount-clear"><strong>clear</strong></a>(self)</dt><dd><tt>zero&nbsp;ourself&nbsp;out</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PCCount">class <strong>PCCount</strong></a>(<a href="py430.html#Subarray">Subarray</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>pc&nbsp;counts&nbsp;by&nbsp;(address&nbsp;&gt;&gt;&nbsp;1)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Data and other attributes defined here:<br>
+<dl><dt><strong>OFS</strong> = 59408</dl>
+
+<dl><dt><strong>SIZE</strong> = 32768</dl>
+
+<hr>
+Methods inherited from <a href="py430.html#Subarray">Subarray</a>:<br>
+<dl><dt><a name="PCCount-__getitem__"><strong>__getitem__</strong></a>(self, item)</dt><dd><tt>fetch&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="PCCount-__init__"><strong>__init__</strong></a>(self, obj)</dt><dd><tt>create&nbsp;subarray&nbsp;in&nbsp;obj</tt></dd></dl>
+
+<dl><dt><a name="PCCount-__len__"><strong>__len__</strong></a>(self)</dt><dd><tt>return&nbsp;our&nbsp;length</tt></dd></dl>
+
+<dl><dt><a name="PCCount-__setitem__"><strong>__setitem__</strong></a>(self, item, val)</dt><dd><tt>store&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="PCCount-clear"><strong>clear</strong></a>(self)</dt><dd><tt>zero&nbsp;ourself&nbsp;out</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PCTicks">class <strong>PCTicks</strong></a>(<a href="py430.html#Subarray">Subarray</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>cumulative&nbsp;ticks&nbsp;by&nbsp;(pc&nbsp;&gt;&gt;&nbsp;1)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Data and other attributes defined here:<br>
+<dl><dt><strong>OFS</strong> = 288843</dl>
+
+<dl><dt><strong>SIZE</strong> = 32768</dl>
+
+<hr>
+Methods inherited from <a href="py430.html#Subarray">Subarray</a>:<br>
+<dl><dt><a name="PCTicks-__getitem__"><strong>__getitem__</strong></a>(self, item)</dt><dd><tt>fetch&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="PCTicks-__init__"><strong>__init__</strong></a>(self, obj)</dt><dd><tt>create&nbsp;subarray&nbsp;in&nbsp;obj</tt></dd></dl>
+
+<dl><dt><a name="PCTicks-__len__"><strong>__len__</strong></a>(self)</dt><dd><tt>return&nbsp;our&nbsp;length</tt></dd></dl>
+
+<dl><dt><a name="PCTicks-__setitem__"><strong>__setitem__</strong></a>(self, item, val)</dt><dd><tt>store&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="PCTicks-clear"><strong>clear</strong></a>(self)</dt><dd><tt>zero&nbsp;ourself&nbsp;out</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Profile">class <strong>Profile</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Profiling&nbsp;class.&nbsp;Interesting&nbsp;ivars&nbsp;include:<br>
+&nbsp;<br>
+pc_count&nbsp;&nbsp;&nbsp;--&nbsp;a&nbsp;&nbsp;<a href="#PCCount">PCCount</a><br>
+insn_count&nbsp;--&nbsp;an&nbsp;<a href="#InsnCount">InsnCount</a><br>
+insn_ticks&nbsp;--&nbsp;an&nbsp;<a href="#InsnTicks">InsnTicks</a><br>
+mem_count&nbsp;&nbsp;--&nbsp;a&nbsp;&nbsp;<a href="#MemCount">MemCount</a><br>
+sp_set&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;an&nbsp;<a href="#SPSet">SPSet</a><br>
+sp_range&nbsp;&nbsp;&nbsp;--&nbsp;an&nbsp;<a href="#SPRange">SPRange</a><br>
+jump_count&nbsp;--&nbsp;a&nbsp;&nbsp;<a href="#JumpCount">JumpCount</a><br>
+call_count&nbsp;--&nbsp;a&nbsp;&nbsp;<a href="#CallCount">CallCount</a><br>
+pc_ticks&nbsp;&nbsp;&nbsp;--&nbsp;a&nbsp;&nbsp;<a href="#PCTicks">PCTicks</a><br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Profile-__init__"><strong>__init__</strong></a>(self, cpu, ary)</dt><dd><tt>create&nbsp;profiler&nbsp;bound&nbsp;to&nbsp;cpu&nbsp;and&nbsp;data&nbsp;array</tt></dd></dl>
+
+<dl><dt><a name="Profile-clear"><strong>clear</strong></a>(self)</dt><dd><tt>zero&nbsp;out&nbsp;profiling&nbsp;data</tt></dd></dl>
+
+<dl><dt><a name="Profile-set"><strong>set</strong></a>(self, val<font color="#909090">='now'</font>)</dt><dd><tt>set&nbsp;profiling&nbsp;state.&nbsp;val&nbsp;must&nbsp;be&nbsp;an&nbsp;integer&nbsp;or&nbsp;one<br>
+of&nbsp;the&nbsp;strings&nbsp;"off",&nbsp;"on",&nbsp;"now",&nbsp;"next".&nbsp;the<br>
+profiling&nbsp;state&nbsp;is&nbsp;set&nbsp;as&nbsp;follows:<br>
+&nbsp;<br>
+str&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;description<br>
+===&nbsp;&nbsp;&nbsp;===&nbsp;&nbsp;&nbsp;===========<br>
+off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;profiling&nbsp;is&nbsp;suspended<br>
+on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;0&nbsp;&nbsp;&nbsp;profiling&nbsp;enabled&nbsp;after&nbsp;current&nbsp;instruction&nbsp;completes<br>
+next&nbsp;&nbsp;&nbsp;&gt;0&nbsp;&nbsp;&nbsp;same&nbsp;as&nbsp;"on"<br>
+now&nbsp;&nbsp;&nbsp;&nbsp;&lt;0&nbsp;&nbsp;&nbsp;profiling&nbsp;enabled&nbsp;immediately</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Regs">class <strong>Regs</strong></a>(<a href="py430.html#VBase">VBase</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>cpu&nbsp;registers<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Regs-__getattr__"><strong>__getattr__</strong></a>(self, attr)</dt><dd><tt>fetch&nbsp;register&nbsp;by&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="Regs-__getitem__"><strong>__getitem__</strong></a>(self, reg)</dt><dd><tt>fetch&nbsp;register&nbsp;by&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="Regs-__len__"><strong>__len__</strong></a>(self)</dt><dd><tt>return&nbsp;16&nbsp;(number&nbsp;of&nbsp;msp430&nbsp;registers)</tt></dd></dl>
+
+<dl><dt><a name="Regs-__setattr__"><strong>__setattr__</strong></a>(self, attr, val)</dt><dd><tt>store&nbsp;register&nbsp;by&nbsp;name</tt></dd></dl>
+
+<dl><dt><a name="Regs-__setitem__"><strong>__setitem__</strong></a>(self, reg, val)</dt><dd><tt>store&nbsp;register&nbsp;by&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="Regs-clear"><strong>clear</strong></a>(self)</dt><dd><tt>zero&nbsp;out&nbsp;all&nbsp;registers</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="py430.html#VBase">VBase</a>:<br>
+<dl><dt><a name="Regs-__init__"><strong>__init__</strong></a>(self, cpu)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SPRange">class <strong>SPRange</strong></a>(<a href="py430.html#Subarray">Subarray</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>sp&nbsp;range&nbsp;[low,&nbsp;high]<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Data and other attributes defined here:<br>
+<dl><dt><strong>OFS</strong> = 92177</dl>
+
+<dl><dt><strong>SIZE</strong> = 2</dl>
+
+<hr>
+Methods inherited from <a href="py430.html#Subarray">Subarray</a>:<br>
+<dl><dt><a name="SPRange-__getitem__"><strong>__getitem__</strong></a>(self, item)</dt><dd><tt>fetch&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="SPRange-__init__"><strong>__init__</strong></a>(self, obj)</dt><dd><tt>create&nbsp;subarray&nbsp;in&nbsp;obj</tt></dd></dl>
+
+<dl><dt><a name="SPRange-__len__"><strong>__len__</strong></a>(self)</dt><dd><tt>return&nbsp;our&nbsp;length</tt></dd></dl>
+
+<dl><dt><a name="SPRange-__setitem__"><strong>__setitem__</strong></a>(self, item, val)</dt><dd><tt>store&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="SPRange-clear"><strong>clear</strong></a>(self)</dt><dd><tt>zero&nbsp;ourself&nbsp;out</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SPSet">class <strong>SPSet</strong></a>(<a href="py430.html#Subarray">Subarray</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>has&nbsp;sp&nbsp;(r1)&nbsp;range&nbsp;been&nbsp;initialized?<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Data and other attributes defined here:<br>
+<dl><dt><strong>OFS</strong> = 92176</dl>
+
+<dl><dt><strong>SIZE</strong> = 1</dl>
+
+<hr>
+Methods inherited from <a href="py430.html#Subarray">Subarray</a>:<br>
+<dl><dt><a name="SPSet-__getitem__"><strong>__getitem__</strong></a>(self, item)</dt><dd><tt>fetch&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="SPSet-__init__"><strong>__init__</strong></a>(self, obj)</dt><dd><tt>create&nbsp;subarray&nbsp;in&nbsp;obj</tt></dd></dl>
+
+<dl><dt><a name="SPSet-__len__"><strong>__len__</strong></a>(self)</dt><dd><tt>return&nbsp;our&nbsp;length</tt></dd></dl>
+
+<dl><dt><a name="SPSet-__setitem__"><strong>__setitem__</strong></a>(self, item, val)</dt><dd><tt>store&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="SPSet-clear"><strong>clear</strong></a>(self)</dt><dd><tt>zero&nbsp;ourself&nbsp;out</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Subarray">class <strong>Subarray</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>acts&nbsp;like&nbsp;a&nbsp;list&nbsp;of&nbsp;length&nbsp;self.<strong>SIZE</strong>&nbsp;whose<br>
+first&nbsp;element&nbsp;lives&nbsp;at&nbsp;index&nbsp;self.<strong>OFS</strong>&nbsp;of<br>
+the&nbsp;object&nbsp;passed&nbsp;to&nbsp;the&nbsp;constructor.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Subarray-__getitem__"><strong>__getitem__</strong></a>(self, item)</dt><dd><tt>fetch&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="Subarray-__init__"><strong>__init__</strong></a>(self, obj)</dt><dd><tt>create&nbsp;subarray&nbsp;in&nbsp;obj</tt></dd></dl>
+
+<dl><dt><a name="Subarray-__len__"><strong>__len__</strong></a>(self)</dt><dd><tt>return&nbsp;our&nbsp;length</tt></dd></dl>
+
+<dl><dt><a name="Subarray-__setitem__"><strong>__setitem__</strong></a>(self, item, val)</dt><dd><tt>store&nbsp;item</tt></dd></dl>
+
+<dl><dt><a name="Subarray-clear"><strong>clear</strong></a>(self)</dt><dd><tt>zero&nbsp;ourself&nbsp;out</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="VBase">class <strong>VBase</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>abstract&nbsp;helper&nbsp;base&nbsp;class<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="VBase-__init__"><strong>__init__</strong></a>(self, cpu)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="WordMem">class <strong>WordMem</strong></a>(<a href="py430.html#VBase">VBase</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>access&nbsp;cpu&nbsp;address&nbsp;space&nbsp;as&nbsp;words<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="WordMem-__getitem__"><strong>__getitem__</strong></a>(self, addr)</dt><dd><tt>fetch&nbsp;memory</tt></dd></dl>
+
+<dl><dt><a name="WordMem-__len__"><strong>__len__</strong></a>(self)</dt><dd><tt>return&nbsp;64k</tt></dd></dl>
+
+<dl><dt><a name="WordMem-__setitem__"><strong>__setitem__</strong></a>(self, addr, val)</dt><dd><tt>store&nbsp;memory</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="py430.html#VBase">VBase</a>:<br>
+<dl><dt><a name="WordMem-__init__"><strong>__init__</strong></a>(self, cpu)</dt></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-test"><strong>test</strong></a>()</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>MSP430_BSL_BASE</strong> = 3072<br>
+<strong>MSP430_C_MASK</strong> = 1<br>
+<strong>MSP430_EXC_BAD_ADDRMODE</strong> = 6<br>
+<strong>MSP430_EXC_BAD_ALIGN</strong> = 1<br>
+<strong>MSP430_EXC_BAD_BYTE</strong> = 15<br>
+<strong>MSP430_EXC_BAD_EXC</strong> = 4<br>
+<strong>MSP430_EXC_BAD_EXEC</strong> = 11<br>
+<strong>MSP430_EXC_BAD_IHEX</strong> = 20<br>
+<strong>MSP430_EXC_BAD_REG</strong> = 8<br>
+<strong>MSP430_EXC_BAD_SFR</strong> = 17<br>
+<strong>MSP430_EXC_BAD_SR</strong> = 2<br>
+<strong>MSP430_EXC_BAD_STORE</strong> = 10<br>
+<strong>MSP430_EXC_BAD_TRAP</strong> = 16<br>
+<strong>MSP430_EXC_BAD_WORD</strong> = 9<br>
+<strong>MSP430_EXC_CNT</strong> = 24<br>
+<strong>MSP430_EXC_CPU_TIME</strong> = 14<br>
+<strong>MSP430_EXC_EINVAL</strong> = 12<br>
+<strong>MSP430_EXC_ENOSYS</strong> = 3<br>
+<strong>MSP430_EXC_ENXIO</strong> = 5<br>
+<strong>MSP430_EXC_FC_FAULT</strong> = 19<br>
+<strong>MSP430_EXC_NULL_CTX</strong> = 7<br>
+<strong>MSP430_EXC_OS_ERROR</strong> = 13<br>
+<strong>MSP430_EXC_PYTHON_FAULT</strong> = 21<br>
+<strong>MSP430_EXC_WDT_FAULT</strong> = 18<br>
+<strong>MSP430_INSN_ADD</strong> = 2<br>
+<strong>MSP430_INSN_ADDC</strong> = 3<br>
+<strong>MSP430_INSN_ALL</strong> = 0<br>
+<strong>MSP430_INSN_AND</strong> = 12<br>
+<strong>MSP430_INSN_BIC</strong> = 9<br>
+<strong>MSP430_INSN_BIS</strong> = 10<br>
+<strong>MSP430_INSN_BIT</strong> = 8<br>
+<strong>MSP430_INSN_CALL</strong> = 18<br>
+<strong>MSP430_INSN_CMP</strong> = 6<br>
+<strong>MSP430_INSN_CNT</strong> = 27<br>
+<strong>MSP430_INSN_DADD</strong> = 7<br>
+<strong>MSP430_INSN_JC</strong> = 23<br>
+<strong>MSP430_INSN_JGE</strong> = 25<br>
+<strong>MSP430_INSN_JL</strong> = 26<br>
+<strong>MSP430_INSN_JMP</strong> = 27<br>
+<strong>MSP430_INSN_JN</strong> = 24<br>
+<strong>MSP430_INSN_JNC</strong> = 22<br>
+<strong>MSP430_INSN_JNZ</strong> = 20<br>
+<strong>MSP430_INSN_JZ</strong> = 21<br>
+<strong>MSP430_INSN_MOV</strong> = 1<br>
+<strong>MSP430_INSN_PUSH</strong> = 17<br>
+<strong>MSP430_INSN_RETI</strong> = 19<br>
+<strong>MSP430_INSN_RRA</strong> = 15<br>
+<strong>MSP430_INSN_RRC</strong> = 13<br>
+<strong>MSP430_INSN_SUB</strong> = 5<br>
+<strong>MSP430_INSN_SUBC</strong> = 4<br>
+<strong>MSP430_INSN_SWPB</strong> = 14<br>
+<strong>MSP430_INSN_SXT</strong> = 16<br>
+<strong>MSP430_INSN_TYPE1</strong> = 1<br>
+<strong>MSP430_INSN_TYPE2</strong> = 2<br>
+<strong>MSP430_INSN_TYPE3</strong> = 3<br>
+<strong>MSP430_INSN_XOR</strong> = 11<br>
+<strong>MSP430_I_MASK</strong> = 8<br>
+<strong>MSP430_NPROG</strong> = 49152<br>
+<strong>MSP430_NRAM</strong> = 10240<br>
+<strong>MSP430_NREGS</strong> = 16<br>
+<strong>MSP430_NSFR</strong> = 512<br>
+<strong>MSP430_N_MASK</strong> = 4<br>
+<strong>MSP430_PROFILE_CLEAR</strong> = 0<br>
+<strong>MSP430_PROFILE_NEXT</strong> = 1<br>
+<strong>MSP430_PROFILE_NOW</strong> = -1<br>
+<strong>MSP430_PROFILE_OFF</strong> = 0<br>
+<strong>MSP430_RAM_BASE</strong> = 4352<br>
+<strong>MSP430_ROM_BASE</strong> = 16384<br>
+<strong>MSP430_SUCCESS</strong> = 0<br>
+<strong>MSP430_UF_BASE</strong> = 4096<br>
+<strong>MSP430_V_MASK</strong> = 256<br>
+<strong>MSP430_Z_MASK</strong> = 2<br>
+<strong>__version__</strong> = '$Id: py430.html,v 1.3 2007/08/20 21:12:37 DEV Exp $'</td></tr></table>
+</body></html>

@@ -1,0 +1,353 @@
+########################################################################
+Changelog
+########################################################################
+
+20070727 mhh:
+	- tag rc-20070727-02
+	- added mdb.py (debugger)
+
+20070727 mhh:
+	- tag rc-20070727-01
+	- added and cleaned up docs
+	- added doc/ and python docs
+
+20070726 mhh:
+	- tag rc-20070726-06
+	- load symtab and debug from exe
+
+20070726 mhh:
+	- tag rc-20070726-05
+	- impl initialize() method
+	- removed soft430.py
+
+20070726 mhh:
+	- tag rc-20070726-04
+	- document py430
+	- add rcsid to py430 as __version__
+
+20070726 mhh:
+	- tag rc-20070726-03
+	- prof clear fix
+	- prof clear on ihex load
+
+20070726 mhh:
+	- tag rc-20070726-02
+	- setup.py fix
+	- py430 __main__ fix
+
+20070726 mhh:
+	- tag rc-20070726-01
+	- added tick count by pc to profile
+	- pulled in python sfr, _boot, loader
+	- added basic mem access breakpoint trap support
+	- added jmp/call count by pc to profile
+
+20070725 mhh:
+	- tag rc-20070725-02
+	- TODO mods
+	- minor tweaks
+	
+20070725 mhh:
+	- tag rc-20070725-01
+	- gc support in soft430.c and py430.c
+	- moved blaze_init.{c,h,tex} and panic.asm to svn
+	- moved mutation.tex to svn
+	- removed softmsp.[ch]
+	- updated TODO
+	
+20070718 mhh:
+	- tag rc-20070718-01
+	- added py430.c
+	
+20070714 mhh:
+	- tag rc-20070714-01
+	- python opcode attr
+	- update TODO list
+	
+20070711 mhh:
+	- tag rc-20070711-03
+	- python mem func
+	
+20070711 mhh:
+	- tag rc-20070711-02
+	- minor fixes
+	- TODO:
+	    - decode before exec
+	    - pre-cache/post-set sr for better performance
+	    - ditch //-s
+	    - fix XXXs
+	    - python profiling module (regs/mem/prof)
+	    - load symbol table
+	    - pc prof insns and ticks
+	    - sp tracking for stack usage
+	    - ram access tracking
+	    - ram/stack usage reporting
+	    - python cli: asm, debugger, breakpoints, etc
+	    - infinite loop detection + exception
+	  lower priority:
+	    - impl more peripherals
+	    - impl flash controller, user flash, self-programming
+	    - bsl rom image
+	    - support non-f1611-s
+
+20070711 mhh:
+	- tag rc-20070711-01
+	- impl prof func
+	- clear opcode[] and op_ndx at start of run()
+	- impl reg func
+	
+20070710 mhh:
+	- tag rc-20070710-04
+	- impl msp430_sfr_byte() and msp430_sfr_word()
+
+20070710 mhh:
+	- tag rc-20070710-03
+	- prep for profiler reimpl
+	- add rcsid
+	- add line# as exc_info[3]
+	- minor trap fixup
+
+20070710 mhh:
+	- tag rc-20070710-02
+	- add .cvsignore
+	- oops -- reimpl traps
+	- impl msp430_getreg()
+	- special-case "push sp" only
+	- clear r14 in bitbang.asm
+	- special-case push/call during decode not exec
+	- init info.daddr
+	- add info.res
+	- remove cg.py
+	- change Makefile
+	- add some python constants
+
+20070710 mhh:
+	- tag rc-20070710-01
+	- worked in softmsp.c impls
+	- passes all test cases
+	- had to lose ifetch and disasm though :-\
+	- not (as) table-based now
+	
+20070708 mhh:
+	- sfr name API func
+	- EXC_PM_CHANGE for SCG1, SCG0, OSCOFF (and CPUOFF)
+	- merge memory funcs
+	- pyobj attr docs
+	
+20070707 mhh:
+	- tag alpha-20070707-01
+	- TODO:
+	    - fix XXXs
+	    - sp tracking for stack usage
+	    - ram access tracking
+	    - ram/stack usage reporting
+	    - python mem alloc and mem func testing
+	    - python cli: asm, debugger, breakpoints, etc
+	    - infinite loop detection + exception
+	    - pc prof insns and ticks
+	  lower priority:
+	    - impl more peripherals
+	    - impl flash controller, user flash, self-programming
+	    - bsl rom image
+	    - support non-f1611-s
+	- python sfr, traps (lightly tested)
+	- python mem (untested)
+	
+20070707 mhh:
+	- class interface
+	- added some address space constants
+
+20070706 mhh:
+	- tagged as alpha-20070706-03
+	- disasm fix
+
+20070706 mhh:
+	- tagged as alpha-20070706-02
+	- minor build cleanups
+
+20070706 mhh:
+	- tagged as alpha-20070706-01
+	- soft430.[ch] c/cpython added
+	- lots of bugs in impl
+	
+20070702 mhh:
+	- tagged rc-20070702-03
+	- added mpool.c
+
+20070702 mhh:
+	- tagged rc-20070702-02
+	- hwmul support added
+	- fixed sfrs[] alloc bug
+
+20070702 mhh:
+	- tagged rc-20070702-01
+	- mutation edits
+	
+20070630 mhh:
+	- tagged rc-20070630-02
+	- minor mutation fixes
+	- emailed
+	
+20070630 mhh:
+	- tagged rc-20070630-01
+	- revised mutation
+	
+20070629 mhh:
+	- tagged rc-20070629-01
+	- first draft of mutation complete
+	
+20070628 mhh:
+	- misc cleanups
+
+20070628 mhh:
+	- tagged as rc-20070628-01
+	- impl MSP430_MEM_STATS compile option (speedup if undef)
+	- impl SFR name table (also used to test SFR existence)
+	- fixed msp430_run() bug
+	- sjrefb calibrated with specan:
+	    - DCOCTL=0xc0, BCSCTL1=0x87, BCSCTL2=0x01
+	    - 7.9715 MHz
+	- dinking with measuring timing loop
+	- added "double hz" for cpu speed
+	- fix immed checking for single-op instrs
+	- timing fixes (measured)
+
+20070627 mhh:
+	- tagged as rc-20070627-02
+	- remove old _mem() impl
+	
+20070627 mhh:
+	- tagged as rc-20070627-01
+	- added blaze_init.{tex,pdf}
+	- added blaze_init.[ch]
+	- added panic.asm
+	
+20070626 mhh:
+	- tagged as rc-20070626-04
+	- fix timings for CG
+	- print some SFR writes
+	- reverse byte ops on word fetch/store so SFR code can
+	  validate key before low byte stored
+
+20070626 mhh:
+	- tagged as rc-20070626-03
+	- verf sjref, sjrefa, and sjrefb on mrf1611cc1100
+	- impl NO_PROFILE for softmsp.h
+	- impl leds for mrf1611cc1100
+	
+20070626 mhh:
+	- tagged as rc-20070626-02
+	- fixed dadd bug in bitbang.asm
+	- cleaned up comments
+	
+20070626 mhh:
+	- tagged rc-20070626-01
+	- added bitbang.asm
+	- fixed rra bug
+	
+20070624 mhh:
+	- tagged as rc-20070624-07
+	- added some docs to softmsp.h
+	- added SOFTMSP_CLI defn support (main() in softmsp.c)
+	- profile clear also clears ram/exe access counters
+
+20070624 mhh:
+	- tagged as rc-20070624-06
+	- fixed MSP430_SAVE_R15() asm bug
+
+20070624 mhh:
+	- tagged as rc-20070624-05
+	- made stats be a pointer
+	- rename all funcs, macros, and typedefs msp430_xyz
+	- rename all consts MSP430_XYZ
+	
+20070624 mhh:
+	- tagged as rc-20070624-04
+	- added per-16-byte-chunk ram access tracking
+	- added per-16-byte-chunk program execution tracking
+	- added xok (ok to execute?) flag
+	- impl most sfrs as ram (basic flash ctrl and hwmul)
+	- update msp430_strerror()
+	- make report output compatible with ConfigParser
+
+20070624 mhh:
+	- tagged as rc-20070624-03 (859us host on sjrefb)
+	- added TODO
+	- rename typedefs throughout with msp430_ prefix
+	- zero-out rom, if allocated by msp_init
+	- don't clear user flash area
+	
+20070624 mhh:
+	- tagged as rc-20070624-02
+	- rm softmsp.py after _add fix
+	
+20070624 mhh:
+	- tagged as rc-20070624-01
+	- fixed _add once and for all (i hope)
+	
+20070623 mhh:
+	- tagged as rc-20070623-02
+	- fixed ctx decl in sjref.c (removed mac[] storage)
+	
+20070623 mhh:
+	- tagged as rc-20070623-01
+	- ported sjcsmac.asm to msp430-as
+	- added asm support to sjref.c
+	- fixed minor alignment issue in sjcsmac.asm:sjcs_process
+	- fixed minor doc buf in sjcsmac.asm
+	
+20070614 mhh:
+	- tagged as rc-20070614-01
+	- smsp -> softmsp
+	
+20070613 mhh:
+	- tagged as rc-20070613-01
+	- impl smsp.[ch]
+	
+20070612 mhh:
+	- tagged as rc-20070612-01
+	- handle unaligned data
+	- sjcsmac.asm sizes:
+	  - 1252 bytes (932 text, 320 const data)
+	  -   44 byte context (20+8+8+8)
+	- sjcsmac.asm timings:
+	    #by    clks
+	    ===    ====
+	      0	   3082   385 us
+	      4	   3891
+	      8	   3908   103 us/blk
+	     16	   4736
+	     24	   5560
+	     32	   6384
+	     40	   7213   0.90 ms
+	     48	   8042   1.05 ms
+	     56	   8866
+	     64	   9690
+	
+20070612 mhh:
+	- tagged as rc-1
+	- sjcsmac.asm sizes:
+	  - 1124 bytes (824 text, 320 const data)
+	  -   44 byte context (20+8+8+8)
+	- sjcsmac.asm timings:
+	    #by    clks
+	    ===    ====
+	      0	   3046   381 us
+	      4	   3847
+	      8	   3856   101 us/blk
+	     16	   4668
+	     24	   5476
+	     32	   6284
+	     40	   7097
+	     48	   7910
+	     56	   8718
+	     64	   9526
+	- verify sjcsmac.asm vs me.c
+	- various improvements:
+	  - smaller code
+	  - stronger security (full crypt on ksched/nsched)
+	- fix sim carry bug on subtract
+	- fix sim rrc instruction
+
+### EOF Changelog
+
