@@ -1,14 +1,15 @@
 
-<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html><head><title>Python: module _soft430</title>
+<meta charset="utf-8">
 </head><body bgcolor="#f0f0f8">
 
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_soft430</strong></big></big> (version $Id: _soft430.html,v 1.3 2007/08/20 21:12:37 DEV Exp $)</font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_soft430</strong></big></big> (version $Id: soft430.c,v 1.32 2007/07/27 15:22:22 DEV Exp $)</font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/dev/msp/build/lib.cygwin-1.5.21-i686-2.5/_soft430.dll">/home/dev/msp/build/lib.cygwin-1.5.21-i686-2.5/_soft430.dll</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/fin13782654/git/msp430-16bit-simulator/build/lib.linux-x86_64-2.7/_soft430.so">/home/fin13782654/git/msp430-16bit-simulator/build/lib.linux-x86_64-2.7/_soft430.so</a></font></td></tr></table>
     <p><tt>This&nbsp;module&nbsp;implements&nbsp;a&nbsp;Texas&nbsp;Instruments&nbsp;MSP430F1611<br>
 microcontroller&nbsp;in&nbsp;software.&nbsp;See&nbsp;the&nbsp;documentation&nbsp;for<br>
 <a href="#MSP430Type">MSP430Type</a>&nbsp;and&nbsp;<a href="#-new">new</a>()&nbsp;for&nbsp;details.<br>
@@ -62,7 +63,6 @@ raised.</tt></p>
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="_soft430.html#error">error</a>
-</font></dt><dt><font face="helvetica, arial"><a href="_soft430.html#error">error</a>
 </font></dt></dl>
 </dd>
 </dl>
@@ -88,11 +88,11 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Methods inherited from <a href="exceptions.html#RuntimeError">exceptions.RuntimeError</a>:<br>
-<dl><dt><a name="error-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#MSP430Error-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+<dl><dt><a name="error-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#MSP430Error-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;help(type(x))&nbsp;for&nbsp;signature</tt></dd></dl>
 
 <hr>
 Data and other attributes inherited from <a href="exceptions.html#RuntimeError">exceptions.RuntimeError</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x6cb88850&gt;<dd><tt>T.<a href="#MSP430Error-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#MSP430Error-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
 <hr>
 Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
@@ -101,6 +101,10 @@ Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseEx
 <dl><dt><a name="error-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#MSP430Error-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
 
 <dl><dt><a name="error-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#MSP430Error-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="error-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#MSP430Error-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
 
 <dl><dt><a name="error-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
 
@@ -112,6 +116,8 @@ Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseEx
 
 <dl><dt><a name="error-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#MSP430Error-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
 
+<dl><dt><a name="error-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
 <hr>
 Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
 <dl><dt><strong>__dict__</strong></dt>
@@ -119,7 +125,6 @@ Data descriptors inherited from <a href="exceptions.html#BaseException">exceptio
 <dl><dt><strong>args</strong></dt>
 </dl>
 <dl><dt><strong>message</strong></dt>
-<dd><tt>exception&nbsp;message</tt></dd>
 </dl>
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -375,11 +380,11 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Methods inherited from <a href="exceptions.html#RuntimeError">exceptions.RuntimeError</a>:<br>
-<dl><dt><a name="error-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#error-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+<dl><dt><a name="error-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#error-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;help(type(x))&nbsp;for&nbsp;signature</tt></dd></dl>
 
 <hr>
 Data and other attributes inherited from <a href="exceptions.html#RuntimeError">exceptions.RuntimeError</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x6cb88850&gt;<dd><tt>T.<a href="#error-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#error-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
 <hr>
 Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
@@ -388,6 +393,10 @@ Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseEx
 <dl><dt><a name="error-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#error-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
 
 <dl><dt><a name="error-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#error-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="error-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#error-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
 
 <dl><dt><a name="error-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
 
@@ -399,6 +408,8 @@ Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseEx
 
 <dl><dt><a name="error-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#error-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
 
+<dl><dt><a name="error-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
 <hr>
 Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
 <dl><dt><strong>__dict__</strong></dt>
@@ -406,7 +417,6 @@ Data descriptors inherited from <a href="exceptions.html#BaseException">exceptio
 <dl><dt><strong>args</strong></dt>
 </dl>
 <dl><dt><strong>message</strong></dt>
-<dd><tt>exception&nbsp;message</tt></dd>
 </dl>
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -497,5 +507,5 @@ Returns&nbsp;a&nbsp;new&nbsp;MSP430F1611&nbsp;CPU&nbsp;<a href="__builtin__.html
 <strong>MSP430_UF_BASE</strong> = 4096<br>
 <strong>MSP430_V_MASK</strong> = 256<br>
 <strong>MSP430_Z_MASK</strong> = 2<br>
-<strong>__version__</strong> = '$Id: _soft430.html,v 1.3 2007/08/20 21:12:37 DEV Exp $'</td></tr></table>
+<strong>__version__</strong> = '$Id: soft430.c,v 1.32 2007/07/27 15:22:22 DEV Exp $'</td></tr></table>
 </body></html>

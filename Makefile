@@ -39,9 +39,9 @@ python:
 pydocs:
 	PYTHONPATH=`(cd build/lib.* && pwd)`; export PYTHONPATH; \
 	cd doc && ( \
-	pydoc -w _soft430; \
-	pydoc -w _py430; \
-	pydoc -w py430 )
+	$(PYDOC) -w _soft430; \
+	$(PYDOC) -w _py430; \
+	$(PYDOC) -w py430 )
 
 soft430.exe:	soft430.c soft430.h
 	$(CC) $(CFLAGS) -o $@ $<
